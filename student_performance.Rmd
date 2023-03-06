@@ -1,0 +1,51 @@
+---
+title: "Student Performance"
+output: html_document
+date: '2023-02-28'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Data 
+
+Data loading and manipulation
+```{r include=FALSE} 
+# prevent printing of the R code
+# path to data
+students_data <- read.csv("StudentsPerformance.csv")
+```
+
+```{r include=TRUE}
+dim(students_data) # dimensions: 1000 x 8 (no of examples x no of variables)
+sapply(students_data, class) # name of variables
+# Data is properly loaded.
+```
+There are 3 numeric and 5 ordinal variables in dataset. Numeric variables are Reading score, Writing score and Math score.
+
+Let's take a look at the distribution of math, reading and writing scores.
+
+```{r}
+hist(students_data$math.score ,main='Math score histogram', xlab='math score', ylab='frequency', col="blue")
+boxplot(students_data$math.score,
+        main='Math score box-plot',
+        ylab='math score')
+summary(students_data$math.score)
+```
+```{r}
+hist(students_data$reading.score ,main='Reading score histogram', xlab='reading score', ylab='frequency', col="red")
+boxplot(students_data$reading.score,
+        main='Reading score box-plot',
+        ylab='reading score')
+summary(students_data$reading.score)
+```
+```{r}
+hist(students_data$writing.score ,main='Writing score histogram', xlab='writing score', ylab='frequency', col="green")
+boxplot(students_data$writing.score,
+        main='Writing score box-plot',
+        ylab='writing score')
+summary(students_data$writing.score)
+```
+We see that all three distirbutions are almost normally distributed.
